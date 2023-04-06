@@ -19,3 +19,4 @@ function toggleDesktopMenu(){
 function toggleMobileMenu(){
     mobileMenu.classList.toggle('inactive');
 }
+
