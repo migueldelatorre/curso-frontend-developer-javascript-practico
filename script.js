@@ -13,17 +13,36 @@ menuHamicon.addEventListener('click', toggleMobileMenu);
 carritoCompra.addEventListener('click', toggleOrderCart);
 
 
-
-
 function toggleDesktopMenu(){
+    const ismyOrdercartClosed = myOrdercart.classList.contains('inactive');
+    if(!ismyOrdercartClosed){
+        myOrdercart.classList.add('inactive');
+    }
+
     desktopMenu.classList.toggle('inactive');
 };
 
 function toggleMobileMenu(){
+    const ismyOrdercartClosed = myOrdercart.classList.contains('inactive');
+    if (!ismyOrdercartClosed){
+        myOrdercart.classList.add('inactive');
+    };
+
     mobileMenu.classList.toggle('inactive');
 };
 
+
 function toggleOrderCart(){
+    const ismobileMenuClosed = mobileMenu.classList.contains('inactive');
+    const isdesktopMenuClosed = desktopMenu.classList.contains('inactive');
+    if (!ismobileMenuClosed){
+        mobileMenu.classList.add('inactive');
+    };
+
+    if (!isdesktopMenuClosed){
+        desktopMenu.classList.add('inactive');
+    };
+
     myOrdercart.classList.toggle('inactive');
 };
 
