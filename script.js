@@ -6,7 +6,7 @@ const menuHamicon = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 const carritoCompra = document.querySelector('.navbar-shopping-cart');
-const myOrdercart = document.querySelector('.product-detail');
+const myOrdercart = document.querySelector('#shopingCartDetail');
 
 
 
