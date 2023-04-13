@@ -8,21 +8,29 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const carritoCompra = document.querySelector('.navbar-shopping-cart');
 const myOrdercart = document.querySelector('#shopingCartDetail');
 
+const productDetail = document.querySelector('#productDetail');
+const productDetailClose = document.querySelector('.product-detail-close');
+
+
 
 
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamicon.addEventListener('click', toggleMobileMenu);
 carritoCompra.addEventListener('click', toggleOrderCart);
+productDetailClose.addEventListener('click', closeProductDetail);
+
 
 
 function toggleDesktopMenu(){
     const ismyOrdercartClosed = myOrdercart.classList.contains('inactive');
     if(!ismyOrdercartClosed){
         myOrdercart.classList.add('inactive');
+        
     }
 
     desktopMenu.classList.toggle('inactive');
+    closeProductDetail();
 };
 
 function toggleMobileMenu(){
@@ -32,14 +40,15 @@ function toggleMobileMenu(){
     };
 
     mobileMenu.classList.toggle('inactive');
+    closeProductDetail();
 };
-
 
 function toggleOrderCart(){
     const ismobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isdesktopMenuClosed = desktopMenu.classList.contains('inactive');
     if (!ismobileMenuClosed){
         mobileMenu.classList.add('inactive');
+        
     };
 
     if (!isdesktopMenuClosed){
@@ -47,7 +56,20 @@ function toggleOrderCart(){
     };
 
     myOrdercart.classList.toggle('inactive');
+    closeProductDetail();
 };
+
+function closeProductDetail(){
+    productDetail.classList.add('inactive');
+};
+
+function openProductDetail(){
+   productDetail.classList.remove('inactive'); 
+   myOrdercart.classList.add('inactive');
+   desktopMenu.classList.add('inactive');
+};
+
+
 
 const productList=[];
 productList.push({
@@ -111,6 +133,10 @@ for (product of arrayProductList) {
    const imgn = document.createElement('img'); // Aqui creamos una etiqueta img y la asignamos a la var imgn.
    imgn.setAttribute('src', product.imagen);    //SetAttribute agrega un atributo a la variable imgn que hemos creado, en este caso el atributo src.
     //Ademas le agregamos  lo que venga en product.imagen (para no poner la url directamente y que asi sea dinamico.)
+
+    imgn.addEventListener('click', openProductDetail);
+
+
 
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
